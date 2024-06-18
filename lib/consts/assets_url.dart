@@ -24,11 +24,16 @@ class AssetsUrl {
   static String painting = "assets/images/Painting.png";
   static String fixingTv = "assets/images/FixingTv.png";
   static String cleaning = "assets/images/Cleaning.png";
+  static String worker = "assets/images/worker.png";
+  static String star = "assets/images/star.svg";
+  static String starEmpty = "assets/images/starEmpty.svg";
+  static String stars = "assets/images/Stars.png";
   //icon
   static String location = "assets/images/Location.svg";
   static String focus = "assets/images/Focus.svg";
   static String bell = "assets/images/Notification.svg";
   static String search = "assets/images/Search.svg";
+  static String fiter = "assets/images/Filter.svg";
 
   //categories
 

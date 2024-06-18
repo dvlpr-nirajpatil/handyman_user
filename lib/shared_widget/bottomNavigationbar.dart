@@ -8,12 +8,15 @@ import 'package:handyman_user/views/home_screen/home_screen.dart';
 import 'package:handyman_user/views/profile_screen/profile_screen.dart';
 
 class BottomNav extends StatefulWidget {
-  BottomNav({super.key, required this.index});
+  const BottomNav({
+    super.key,
+  });
 
   @override
   State<BottomNav> createState() => _BottomNavState();
-  var index = 0;
 }
+
+var index = 0;
 
 List screens = [
   HomeScreen.id,
@@ -30,10 +33,11 @@ class _BottomNavState extends State<BottomNav> {
       type: BottomNavigationBarType.fixed,
       showUnselectedLabels: false,
       showSelectedLabels: false,
-      currentIndex: widget.index,
+      currentIndex: index,
       onTap: (value) {
-        context.goNamed(screens[widget.index]);
-        // setState(() {});
+        index = value;
+        context.goNamed(screens[index]);
+        setState(() {});
       },
       items: [
         BottomNavigationBarItem(

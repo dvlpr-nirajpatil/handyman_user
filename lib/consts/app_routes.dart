@@ -4,7 +4,9 @@ import 'package:handyman_user/shared_widget/bottomNavigationbar.dart';
 import 'package:handyman_user/views/auth_screen/sign_in/sign_in.dart';
 import 'package:handyman_user/views/auth_screen/sign_up/sign_up.dart';
 import 'package:handyman_user/views/booking_screen/booking_screen.dart';
+import 'package:handyman_user/views/category_screen/category_details_screen.dart';
 import 'package:handyman_user/views/category_screen/category_screen.dart';
+import 'package:handyman_user/views/category_screen/service_filter.dart';
 import 'package:handyman_user/views/chat_screen/chat_screen.dart';
 import 'package:handyman_user/views/home_screen/home_screen.dart';
 import 'package:handyman_user/views/profile_screen/profile_screen.dart';
@@ -39,8 +41,8 @@ class AppRoutes {
           return Scaffold(
               body: child,
               bottomNavigationBar: BottomNav(
-                index: calculateScreenIndex(state),
-              ));
+                  //  calculateScreenIndex(state),
+                  ));
         },
         routes: [
           GoRoute(
@@ -57,6 +59,20 @@ class AppRoutes {
             path: '/categoryscreen',
             name: CategoryScreen.id,
             builder: (context, state) => CategoryScreen(),
+            routes: [
+              GoRoute(
+                path: 'categorydetailsscreen',
+                name: CategoryDetailsScreen.id,
+                builder: (context, state) => CategoryDetailsScreen(),
+                routes: [
+                  GoRoute(
+                    path: 'servicefilter',
+                    name: ServiceFilter.id,
+                    builder: (context, state) => ServiceFilter(),
+                  ),
+                ],
+              ),
+            ],
           ),
           GoRoute(
             path: '/chatscreen',
@@ -74,23 +90,23 @@ class AppRoutes {
   );
 }
 
-int calculateScreenIndex(GoRouterState state) {
-  final location = state.matchedLocation;
+// int calculateScreenIndex(GoRouterState state) {
+//   final location = state.matchedLocation;
 
-  if (location.startsWith('/homescreen')) {
-    return 0;
-  }
-  if (location.startsWith('/bookingscreen')) {
-    return 1;
-  }
-  if (location.startsWith('/categoryscreen')) {
-    return 2;
-  }
-  if (location.startsWith('/chatscreen')) {
-    return 3;
-  }
-  if (location.startsWith('/profilescreen')) {
-    return 4;
-  }
-  return -1;
-}
+//   if (location.startsWith('/homescreen')) {
+//     return 0;
+//   }
+//   if (location.startsWith('/bookingscreen')) {
+//     return 1;
+//   }
+//   if (location.startsWith('/categoryscreen')) {
+//     return 2;
+//   }
+//   if (location.startsWith('/chatscreen')) {
+//     return 3;
+//   }
+//   if (location.startsWith('/profilescreen')) {
+//     return 4;
+//   }
+//   return -1;
+// }
