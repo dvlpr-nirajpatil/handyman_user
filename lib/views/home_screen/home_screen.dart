@@ -8,7 +8,7 @@ import 'package:handyman_user/consts/color_pallet.dart';
 import 'package:handyman_user/consts/spacing.dart';
 import 'package:handyman_user/consts/typography.dart';
 import 'package:handyman_user/views/home_screen/book_service_step_one.dart';
-import 'package:handyman_user/views/home_screen/service_detail.dart';
+
 import 'package:velocity_x/velocity_x.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -109,7 +109,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                       Spacer(),
                       Text(
-                        "Veiw All",
+                        "View All",
                         style: TextStyle(
                             fontFamily: Typo.medium,
                             fontSize: 14.sp,
@@ -119,7 +119,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 15.h),
                   GridView.builder(
-                    scrollDirection: Axis.vertical,
+                    physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         mainAxisExtent: 109,
@@ -355,7 +355,7 @@ class HomeScreen extends StatelessWidget {
             ),
 
             // swiper
-
+            Spacing.heightBox(20),
             Container(
               padding: Spacing.screenPadding.copyWith(top: 40.h),
               child: Column(
