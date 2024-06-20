@@ -7,7 +7,6 @@ import 'package:handyman_user/consts/color_pallet.dart';
 import 'package:handyman_user/consts/spacing.dart';
 import 'package:handyman_user/consts/typography.dart';
 import 'package:handyman_user/views/category_screen/category_details_screen.dart';
-import 'package:velocity_x/velocity_x.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});
@@ -40,16 +39,11 @@ class CategoryScreen extends StatelessWidget {
         leading: IconButton(
             onPressed: () {},
             icon: Icon(
-              Icons.arrow_back_ios_new,
-              color: AppColors.scaffoldBackgroundColor,
+              Icons.arrow_back_ios_new_rounded,
             )),
         backgroundColor: AppColors.primary,
         title: Text(
           "Category",
-          style: TextStyle(
-              fontFamily: Typo.medium,
-              fontSize: 18.sp,
-              color: AppColors.scaffoldBackgroundColor),
         ),
       ),
       body: Container(

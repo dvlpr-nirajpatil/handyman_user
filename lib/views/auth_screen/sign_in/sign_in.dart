@@ -118,10 +118,6 @@ class SignInScreen extends StatelessWidget {
                       },
                       child: Text(
                         "Sign Up",
-                        style: TextStyle(
-                            color: AppColors.primary,
-                            fontFamily: Typo.semiBold,
-                            fontSize: 14.sp),
                       )),
                 ],
               ),

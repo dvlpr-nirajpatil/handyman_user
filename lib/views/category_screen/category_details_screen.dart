@@ -23,16 +23,11 @@ class CategoryDetailsScreen extends StatelessWidget {
               GoRouter.of(context).pop();
             },
             icon: Icon(
-              Icons.arrow_back_ios_new,
-              color: AppColors.scaffoldBackgroundColor,
+              Icons.arrow_back_ios_rounded,
             )),
         backgroundColor: AppColors.primary,
         title: Text(
           "Smart Home",
-          style: TextStyle(
-              fontFamily: Typo.medium,
-              fontSize: 18.sp,
-              color: AppColors.scaffoldBackgroundColor),
         ),
       ),
       body: Container(

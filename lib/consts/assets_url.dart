@@ -45,4 +45,35 @@ class AssetsUrl {
   static String security = "assets/images/Security.svg";
   static String acRepair = "assets/images/AcRepair.svg";
   static String salon = "assets/images/Salon.svg";
+
+  //booking
+  static String verified = "assets/images/Verified.svg";
+  static String callingWhite = "assets/images/CallingWhite.svg";
+  static String chatBlack = "assets/images/ChatBlack.svg";
+  static String mailBlack = "assets/images/MessageBlack.svg";
+  static String like = "assets/images/Like.svg";
+  static String callingBlack = "assets/images/CAllingBlack.svg";
+  static String serviceBg = "assets/images/ServiceBg.png";
+  static String calender = "assets/images/Calendar.svg";
+  static String locationFaint = "assets/images/LocationFaint.svg";
+  static String tick = "assets/images/Tick.svg";
+  static String up = "assets/images/Up.svg";
+  static String down = "assets/images/Down.svg";
+  static String check = "assets/images/check.svg";
+
+  //profile
+  static String arrowDown = "assets/images/ArrowDown.svg";
+  static String arrowRight = "assets/images/ArrowRight.svg";
+  static String camera = "assets/images/Camera.svg";
+  static String darkMode = "assets/images/DarkMode.svg";
+  static String document = "assets/images/Document.svg";
+  static String edit = "assets/images/Edit.svg";
+  static String help = "assets/images/Help.svg";
+  static String language = "assets/images/Language.svg";
+  static String heart = "assets/images/Heart.svg";
+  static String lock = "assets/images/Lock.svg";
+  static String shied = "assets/images/Shield.svg";
+  static String starFaint = "assets/images/StarFAint.svg";
+  static String show = "assets/images/Show.png";
+  static String logout = "assets/images/Logout.png";
 }
