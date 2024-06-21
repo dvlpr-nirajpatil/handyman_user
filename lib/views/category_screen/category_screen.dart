@@ -6,7 +6,7 @@ import 'package:handyman_user/consts/assets_url.dart';
 import 'package:handyman_user/consts/color_pallet.dart';
 import 'package:handyman_user/consts/spacing.dart';
 import 'package:handyman_user/consts/typography.dart';
-import 'package:handyman_user/views/category_screen/category_details_screen.dart';
+import 'package:handyman_user/views/category_screen/category_detail/category_details_screen.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});

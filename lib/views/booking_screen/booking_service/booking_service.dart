@@ -7,6 +7,7 @@ import 'package:handyman_user/consts/assets_url.dart';
 import 'package:handyman_user/consts/color_pallet.dart';
 import 'package:handyman_user/consts/spacing.dart';
 import 'package:handyman_user/consts/typography.dart';
+import 'package:handyman_user/views/booking_screen/widget/bottomsheet.dart';
 
 class BookingService extends StatelessWidget {
   const BookingService({super.key});
@@ -27,12 +28,84 @@ class BookingService extends StatelessWidget {
           "Pending",
         ),
         actions: [
-          Text(
-            "Check Status",
-            style: TextStyle(
-                color: AppColors.scaffoldBackgroundColor,
-                fontFamily: Typo.medium,
-                fontSize: 14.sp),
+          GestureDetector(
+            onTap: () {
+              showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20.w,
+                      ),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Spacing.heightBox(20),
+                          SizedBox(
+                              width: 40.w,
+                              child: Divider(
+                                thickness: 3,
+                              )),
+                          Spacing.heightBox(20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Booking History",
+                                style: TextStyle(
+                                    fontSize: 16.sp,
+                                    fontFamily: Typo.medium,
+                                    color: AppColors.heading),
+                              ),
+                              Text(
+                                "ID : #123",
+                                style: TextStyle(
+                                    fontSize: 14.sp,
+                                    fontFamily: Typo.semiBold,
+                                    color: AppColors.primary),
+                              ),
+                            ],
+                          ),
+                          Spacing.heightBox(20),
+                          Divider(
+                            thickness: 1,
+                          ),
+                          Spacing.heightBox(20),
+                          // Extracting row ------------------------------------------------
+                          bottomSheetBookingTracingWidget(
+                            time: "1:17 PM",
+                            date: "6 Feb",
+                            title: "New Booking",
+                            description: "New Booking added by Customer",
+                            color: Colors.red,
+                          ),
+                          bottomSheetBookingTracingWidget(
+                            time: "1:21 PM",
+                            date: "6 Feb",
+                            title: "Accept Booking",
+                            description: "Status change for pending to accept",
+                            color: Colors.green,
+                          ),
+                          bottomSheetBookingTracingWidget(
+                              time: "1:21 PM",
+                              date: "6 Feb",
+                              title: "Assign Booking",
+                              description: "Booking has assigned",
+                              color: Colors.orange,
+                              isLine: false),
+                          Spacing.heightBox(40),
+                        ],
+                      ),
+                    );
+                  });
+            },
+            child: Text(
+              "Check Status",
+              style: TextStyle(
+                  color: AppColors.scaffoldBackgroundColor,
+                  fontFamily: Typo.medium,
+                  fontSize: 14.sp),
+            ),
           ),
           SizedBox(
             width: 10.w,

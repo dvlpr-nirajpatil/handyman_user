@@ -53,6 +53,7 @@ class ServiceDetail extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [

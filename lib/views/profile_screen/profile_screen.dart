@@ -6,8 +6,8 @@ import 'package:handyman_user/consts/assets_url.dart';
 import 'package:handyman_user/consts/color_pallet.dart';
 import 'package:handyman_user/consts/spacing.dart';
 import 'package:handyman_user/consts/typography.dart';
-import 'package:handyman_user/views/profile_screen/change_password.dart';
-import 'package:handyman_user/views/profile_screen/edit_profile.dart';
+import 'package:handyman_user/views/profile_screen/change_password/change_password.dart';
+import 'package:handyman_user/views/profile_screen/edit_profile/edit_profile.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});

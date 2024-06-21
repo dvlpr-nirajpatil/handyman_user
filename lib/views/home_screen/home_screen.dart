@@ -8,6 +8,7 @@ import 'package:handyman_user/consts/color_pallet.dart';
 import 'package:handyman_user/consts/spacing.dart';
 import 'package:handyman_user/consts/typography.dart';
 import 'package:handyman_user/views/home_screen/book_service_step_one.dart';
+import 'package:handyman_user/views/home_screen/service_detail.dart';
 
 import 'package:velocity_x/velocity_x.dart';
 

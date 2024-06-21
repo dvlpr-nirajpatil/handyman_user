@@ -19,7 +19,7 @@ Widget bottomSheetBookingTracingWidget(
                 fontFamily: Typo.medium,
                 color: AppColors.body),
           ),
-          Spacing.heightbox(8),
+          Spacing.heightBox(8),
           Text(
             "$date",
             style: TextStyle(
@@ -29,14 +29,14 @@ Widget bottomSheetBookingTracingWidget(
           ),
         ],
       ),
-      Spacing.,
+      Spacing.heightBox(8),
       Column(
         children: [
           CircleAvatar(
             radius: 6,
             backgroundColor: color,
           ),
-          Spacing.heightbox(8),
+          Spacing.heightBox(8),
           isLine
               ? DottedLine(
                   direction: Axis.vertical,
@@ -47,10 +47,10 @@ Widget bottomSheetBookingTracingWidget(
                   dashGapLength: 4,
                 )
               : SizedBox(),
-          Spacing.heightbox(10),
+          Spacing.heightBox(10),
         ],
       ),
-      Spacing.widthbox(24),
+      Spacing.widthBox(24),
       Expanded(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -60,16 +60,16 @@ Widget bottomSheetBookingTracingWidget(
               style: TextStyle(
                   fontSize: 16.sp,
                   fontFamily: Typo.medium,
-                  color: AppColors.HeadingColor),
+                  color: AppColors.heading),
             ),
-            Spacing.heightbox(8),
+            Spacing.heightBox(8),
             Text(
               overflow: TextOverflow.visible,
               "$description",
               style: TextStyle(
                   fontSize: 14.sp,
                   fontFamily: Typo.medium,
-                  color: AppColors.graytext),
+                  color: AppColors.body),
             )
           ],
         ),

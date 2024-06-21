@@ -4,17 +4,17 @@ import 'package:handyman_user/shared_widget/bottomNavigationbar.dart';
 import 'package:handyman_user/views/auth_screen/sign_in/sign_in.dart';
 import 'package:handyman_user/views/auth_screen/sign_up/sign_up.dart';
 import 'package:handyman_user/views/booking_screen/booking_screen.dart';
-import 'package:handyman_user/views/booking_screen/booking_service.dart';
-import 'package:handyman_user/views/category_screen/category_details_screen.dart';
+import 'package:handyman_user/views/booking_screen/booking_service/booking_service.dart';
+import 'package:handyman_user/views/category_screen/category_detail/category_details_screen.dart';
 import 'package:handyman_user/views/category_screen/category_screen.dart';
-import 'package:handyman_user/views/category_screen/service_filter.dart';
+import 'package:handyman_user/views/category_screen/service_filter/service_filter.dart';
 import 'package:handyman_user/views/chat_screen/chat_screen.dart';
 import 'package:handyman_user/views/home_screen/book_service_step_one.dart';
 import 'package:handyman_user/views/home_screen/booking_service_step_two.dart';
 import 'package:handyman_user/views/home_screen/home_screen.dart';
 import 'package:handyman_user/views/home_screen/service_detail.dart';
-import 'package:handyman_user/views/profile_screen/change_password.dart';
-import 'package:handyman_user/views/profile_screen/edit_profile.dart';
+import 'package:handyman_user/views/profile_screen/change_password/change_password.dart';
+import 'package:handyman_user/views/profile_screen/edit_profile/edit_profile.dart';
 import 'package:handyman_user/views/profile_screen/profile_screen.dart';
 import 'package:handyman_user/views/splash_screen/splash_screen.dart';
 
@@ -58,14 +58,21 @@ class AppRoutes {
             builder: (context, state) => HomeScreen(),
             routes: [
               GoRoute(
-                path: 'BookingStepOne',
-                name: BookingStepOne.id,
-                builder: (context, state) => BookingStepOne(),
+                path: 'ServiceDetail',
+                name: ServiceDetail.id,
+                builder: (context, state) => ServiceDetail(),
                 routes: [
                   GoRoute(
-                    path: 'BookingStepTwo',
-                    name: BookingStepTwo.id,
-                    builder: (context, state) => BookingStepTwo(),
+                    path: 'BookingStepOne',
+                    name: BookingStepOne.id,
+                    builder: (context, state) => BookingStepOne(),
+                    routes: [
+                      GoRoute(
+                        path: 'BookingStepTwo',
+                        name: BookingStepTwo.id,
+                        builder: (context, state) => BookingStepTwo(),
+                      ),
+                    ],
                   ),
                 ],
               ),
