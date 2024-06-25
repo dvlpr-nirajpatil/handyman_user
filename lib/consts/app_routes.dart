@@ -96,9 +96,11 @@ class AppRoutes {
             builder: (context, state) => CategoryScreen(),
             routes: [
               GoRoute(
-                path: 'categorydetailsscreen',
+                path: 'categorydetailsscreen/:category',
                 name: CategoryDetailsScreen.id,
-                builder: (context, state) => CategoryDetailsScreen(),
+                builder: (context, state) => CategoryDetailsScreen(
+                  category: state.pathParameters['category'],
+                ),
                 routes: [
                   GoRoute(
                     path: 'servicefilter',

@@ -13,7 +13,9 @@ import 'package:handyman_user/views/category_screen/service_filter/service_filte
 import 'package:provider/provider.dart';
 
 class CategoryDetailsScreen extends StatelessWidget {
-  const CategoryDetailsScreen({super.key});
+  CategoryDetailsScreen({super.key, this.category});
+
+  String? category;
 
   static String id = "CategoryDetailsScreen";
 
@@ -30,7 +32,7 @@ class CategoryDetailsScreen extends StatelessWidget {
             )),
         backgroundColor: AppColors.primary,
         title: Text(
-          "Smart Home",
+          category ?? "Smart Home",
         ),
       ),
       body: Container(

@@ -4,12 +4,13 @@ import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:handyman_user/consts/assets_url.dart';
 import 'package:handyman_user/consts/color_pallet.dart';
+import 'package:handyman_user/consts/list.dart';
 import 'package:handyman_user/consts/spacing.dart';
 import 'package:handyman_user/consts/typography.dart';
 import 'package:handyman_user/views/category_screen/category_detail/category_details_screen.dart';
 
 class CategoryScreen extends StatelessWidget {
-  const CategoryScreen({super.key});
+  CategoryScreen({super.key});
 
   static String id = "CategoryScreen";
   static List images = [
@@ -21,9 +22,9 @@ class CategoryScreen extends StatelessWidget {
     AssetsUrl.security,
     AssetsUrl.acRepair,
     AssetsUrl.salon,
+    AssetsUrl.salon,
   ];
   static List name = [
-    "Plumber",
     "Smart Home",
     "Painter",
     "Pest Control",
@@ -32,6 +33,14 @@ class CategoryScreen extends StatelessWidget {
     "AC Repair",
     "Salon",
   ];
+
+  List<Category> categories = [
+    Category(
+      name: "Plumber",
+      icon: AssetsUrl.plumber,
+    )
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +70,10 @@ class CategoryScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                GoRouter.of(context).goNamed(CategoryDetailsScreen.id);
+                GoRouter.of(context)
+                    .goNamed(CategoryDetailsScreen.id, pathParameters: {
+                  'category': name[index],
+                });
               },
               child: Container(
                 height: 109.h,
