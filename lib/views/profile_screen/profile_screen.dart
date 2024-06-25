@@ -10,10 +10,41 @@ import 'package:handyman_user/views/profile_screen/change_password/change_passwo
 import 'package:handyman_user/views/profile_screen/edit_profile/edit_profile.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  ProfileScreen({super.key});
 
   static String id = "ProfileScreen";
 
+  List genralIcons = [
+    AssetsUrl.darkMode,
+    AssetsUrl.lock,
+    AssetsUrl.language,
+    AssetsUrl.heart,
+    AssetsUrl.starFaint,
+  ];
+  List aboutIcons = [
+    AssetsUrl.shied,
+    AssetsUrl.document,
+    AssetsUrl.help,
+    AssetsUrl.dangerCircle,
+  ];
+
+  List generalTitles = [
+    "Dark Mode",
+    "Change Password",
+    "App Language",
+    "Favourite Service",
+    "Rate Us",
+    "Privacy Policy",
+    "Terms & Conditions",
+    "Help Support",
+    "About",
+  ];
+  List aboutTitles = [
+    "Privacy Policy",
+    "Terms & Conditions",
+    "Help Support",
+    "About",
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,18 +123,30 @@ class ProfileScreen extends StatelessWidget {
                   itemCount: 5,
                   itemBuilder: (context, index) {
                     return ListTile(
-                      leading: SvgPicture.asset(AssetsUrl.darkMode),
-                      title: Text(
-                        "Dark Mode",
-                        style: TextStyle(
-                            fontFamily: Typo.medium,
-                            fontSize: 14.sp,
-                            color: AppColors.heading),
-                      ),
-                      trailing: SvgPicture.asset(AssetsUrl.arrowRight),
-                      onTap: () =>
-                          GoRouter.of(context).goNamed(ChangePassword.id),
-                    );
+                        leading: SvgPicture.asset(genralIcons[index]),
+                        title: Text(
+                          "${generalTitles[index]}",
+                          style: TextStyle(
+                              fontFamily: Typo.medium,
+                              fontSize: 14.sp,
+                              color: AppColors.heading),
+                        ),
+                        trailing: index == 0
+                            ? Switch(
+                                value: false,
+                                onChanged: (value) {
+                                  value = value;
+                                })
+                            : SvgPicture.asset(AssetsUrl.arrowRight),
+                        onTap: () {
+                          index == 1
+                              ? GoRouter.of(context).goNamed(ChangePassword.id)
+                              : ScaffoldMessenger.of(context)
+                                  .showSnackBar(SnackBar(
+                                  content: Text("Nothing Here"),
+                                  backgroundColor: Colors.red,
+                                ));
+                        });
                   },
                 ),
               ),
@@ -129,9 +172,9 @@ class ProfileScreen extends StatelessWidget {
                   itemCount: 4,
                   itemBuilder: (context, index) {
                     return ListTile(
-                      leading: SvgPicture.asset(AssetsUrl.darkMode),
+                      leading: SvgPicture.asset(aboutIcons[index]),
                       title: Text(
-                        "Dark Mode",
+                        "${aboutTitles[index]}",
                         style: TextStyle(
                             fontFamily: Typo.medium,
                             fontSize: 14.sp,

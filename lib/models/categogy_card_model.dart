@@ -1,43 +1,28 @@
+class CategoryCardModel {
+  final String image;
+  final String category;
+  final int price;
+  final double rating;
+  final String serviceName;
+  final String provider;
 
-class CategogyCardModel {
-  String? image;
-  String? category;
-  int? price;
-  double? rating;
-  String? serviceName;
-  String? provider;
+  CategoryCardModel({
+    required this.image,
+    required this.category,
+    required this.price,
+    required this.rating,
+    required this.serviceName,
+    required this.provider,
+  });
 
-  CategogyCardModel({this.image, this.category, this.price, this.rating, this.serviceName, this.provider});
-
-  CategogyCardModel.fromJson(Map<String, dynamic> json) {
-    if(json["image"] is String) {
-      image = json["image"];
-    }
-    if(json["category"] is String) {
-      category = json["category"];
-    }
-    if(json["price"] is int) {
-      price = json["price"];
-    }
-    if(json["rating"] is double) {
-      rating = json["rating"];
-    }
-    if(json["serviceName"] is String) {
-      serviceName = json["serviceName"];
-    }
-    if(json["provider"] is String) {
-      provider = json["provider"];
-    }
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["image"] = image;
-    _data["category"] = category;
-    _data["price"] = price;
-    _data["rating"] = rating;
-    _data["serviceName"] = serviceName;
-    _data["provider"] = provider;
-    return _data;
+  factory CategoryCardModel.fromJson(Map<String, dynamic> json) {
+    return CategoryCardModel(
+      image: json['image'],
+      category: json['category'],
+      price: json['price'],
+      rating: json['rating'],
+      serviceName: json['serviceName'],
+      provider: json['provider'],
+    );
   }
 }

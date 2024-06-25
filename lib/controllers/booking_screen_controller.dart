@@ -1,33 +1,42 @@
 import 'package:flutter/material.dart';
-import 'package:handyman_user/consts/app_lists.dart';
 import 'package:handyman_user/models/booking_card_model.dart';
+import 'package:handyman_user/services/request_category.dart';
 
-class BookingScreenController extends ChangeNotifier {
+class BookingScreenController with ChangeNotifier {
+  List<BookingCardModel> allBookings = [];
+  List<BookingCardModel> availableBookings = [];
   String bookingStatus = "All";
 
-  List<BookingCardModel> availableBookings = AppLists.bookingCardList;
-
-  set updateBookingStatus(String value) {
-    bookingStatus = value;
-    notifyListeners();
+  BookingScreenController() {
+    loadAndFilterBookings();
   }
 
-  filterBooking() {
+  Future<void> loadAndFilterBookings() async {
+    allBookings = await loadBookings();
+    filterBooking();
+  }
+
+  void filterBooking() {
     if (bookingStatus == "All") {
-      availableBookings = AppLists.bookingCardList;
+      availableBookings = allBookings;
     } else if (bookingStatus == "Pending") {
-      availableBookings = AppLists.bookingCardList
-          .where((value) => value.status == "pending")
+      availableBookings = allBookings
+          .where((booking) => booking.status!.toLowerCase() == "pending")
           .toList();
     } else if (bookingStatus == "Completed") {
-      availableBookings = AppLists.bookingCardList
-          .where((value) => value.status == "completed")
+      availableBookings = allBookings
+          .where((booking) => booking.status!.toLowerCase() == "completed")
           .toList();
     } else if (bookingStatus == "On Going") {
-      availableBookings = AppLists.bookingCardList
-          .where((value) => value.status == "ongoing")
+      availableBookings = allBookings
+          .where((booking) => booking.status!.toLowerCase() == "ongoing")
           .toList();
     }
     notifyListeners();
+  }
+
+  void setBookingStatus(String status) {
+    bookingStatus = status;
+    filterBooking();
   }
 }

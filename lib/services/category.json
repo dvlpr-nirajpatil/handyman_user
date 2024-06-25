@@ -1,0 +1,26 @@
+[
+    {
+        "image": "image.jpg",
+        "category": "tv",
+        "price": 100,
+        "rating": 4.8,
+        "serviceName": "Fixing Tv",
+        "provider": "Wade Warren"
+    },
+    {
+        "image": "image.jpg",
+        "category": "wallPainting",
+        "price": 50,
+        "rating": 4.4,
+        "serviceName": "wall Painting",
+        "provider": "Wade Warren"
+    },
+    {
+        "image": "image.jpg",
+        "category": "homePainting",
+        "price": 70,
+        "rating": 4,
+        "serviceName": "Painting Beautiful homes",
+        "provider": "Wade Warren"
+    }
+]

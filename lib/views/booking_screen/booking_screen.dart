@@ -59,7 +59,7 @@ class BookingScreen extends StatelessWidget {
                       );
                     }).toList(),
                     onChanged: (value) {
-                      controller.updateBookingStatus = value!;
+                      controller.setBookingStatus(value!);
                       controller.filterBooking();
                     }),
               ),

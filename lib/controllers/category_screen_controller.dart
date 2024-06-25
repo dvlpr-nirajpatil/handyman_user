@@ -1,28 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:handyman_user/consts/app_lists.dart';
 import 'package:handyman_user/models/categogy_card_model.dart';
+import 'package:handyman_user/services/request_category.dart';
 
 class CategoryScreenController extends ChangeNotifier {
   String category = "All";
+  List<CategoryCardModel> allCategories = [];
+  List<CategoryCardModel> availableCategories = [];
 
-  // get updateCategogy => null;
-
-  List<CategogyCardModel> availableCategory = AppLists.categoryCardList;
-
-  updateCategogy(value) {
-    category = value;
-    notifyListeners();
+  CategoryScreenController() {
+    loadAndFilterCategories();
   }
 
-  filterCategory() {
+  Future<void> loadAndFilterCategories() async {
+    allCategories = await loadCategories();
+    filterCategory();
+  }
+
+  void updateCategory(String value) {
+    category = value;
+    filterCategory();
+  }
+
+  void filterCategory() {
     if (category == "All") {
-      availableCategory = AppLists.categoryCardList;
+      availableCategories = allCategories;
     } else if (category == "Wall Painting") {
-      availableCategory = AppLists.categoryCardList
+      availableCategories = allCategories
           .where((value) => value.category == "wallPainting")
           .toList();
     } else if (category == "Home Painting") {
-      availableCategory = AppLists.categoryCardList
+      availableCategories = allCategories
           .where((value) => value.category == "homePainting")
           .toList();
     }

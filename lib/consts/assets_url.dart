@@ -76,4 +76,5 @@ class AssetsUrl {
   static String starFaint = "assets/images/StarFAint.svg";
   static String show = "assets/images/Show.png";
   static String logout = "assets/images/Logout.png";
+  static String dangerCircle = "assets/images/DangerCircle.svg";
 }

@@ -87,8 +87,8 @@ class CategoryDetailsScreen extends StatelessWidget {
                       AppLists.category.length,
                       (index) => GestureDetector(
                         onTap: () {
-                          controller.updateCategogy(AppLists.category[index]);
-                          controller.filterCategory();
+                          controller.updateCategory(AppLists.category[index]);
+                          controller.loadAndFilterCategories();
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -121,7 +121,7 @@ class CategoryDetailsScreen extends StatelessWidget {
                 ),
                 Expanded(
                     child: ListView.builder(
-                  itemCount: controller.availableCategory.length,
+                  itemCount: controller.availableCategories.length,
                   itemBuilder: (context, index) {
                     return Container(
                       margin: EdgeInsets.only(bottom: 24.h),
@@ -175,7 +175,7 @@ class CategoryDetailsScreen extends StatelessWidget {
                                           },
                                         ),
                                         Text(
-                                          "${controller.availableCategory[index].rating}",
+                                          "${controller.availableCategories[index].rating}",
                                           style: TextStyle(
                                               fontFamily: Typo.semiBold,
                                               fontSize: 14.sp,
@@ -187,7 +187,7 @@ class CategoryDetailsScreen extends StatelessWidget {
                                       height: 20.h,
                                     ),
                                     Text(
-                                      "${controller.availableCategory[index].serviceName}",
+                                      "${controller.availableCategories[index].serviceName}",
                                       style: TextStyle(
                                           fontFamily: Typo.medium,
                                           fontSize: 14.sp,
@@ -206,7 +206,7 @@ class CategoryDetailsScreen extends StatelessWidget {
                                           width: 16.w,
                                         ),
                                         Text(
-                                          "${controller.availableCategory[index].provider}",
+                                          "${controller.availableCategories[index].provider}",
                                           style: TextStyle(
                                               fontFamily: Typo.medium,
                                               fontSize: 12.sp,
@@ -253,7 +253,7 @@ class CategoryDetailsScreen extends StatelessWidget {
                                     Border.all(width: 3, color: Colors.white),
                               ),
                               child: Text(
-                                "\$${controller.availableCategory[index].price}",
+                                "\$${controller.availableCategories[index].price}",
                                 style: TextStyle(
                                     fontFamily: Typo.semiBold,
                                     fontSize: 16.sp,
