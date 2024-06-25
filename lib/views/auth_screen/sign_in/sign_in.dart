@@ -10,6 +10,14 @@ import 'package:handyman_user/views/auth_screen/sign_up/sign_up.dart';
 import 'package:handyman_user/views/home_screen/home_screen.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+extension on int {
+  SizedBox get widthBox {
+    return SizedBox(
+      width: this.toDouble().w,
+    );
+  }
+}
+
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
 
@@ -37,32 +45,22 @@ class SignInScreen extends StatelessWidget {
                   .color(AppColors.body)
                   .align(TextAlign.center)
                   .make(),
-
               HeightBox(80.h),
               //Input fields
               TextFormField(
                 decoration: InputDecoration(
-                    label: Text(
-                      "Email Address",
-                      style: TextStyle(
-                          fontFamily: Typo.medium,
-                          fontSize: 14,
-                          color: AppColors.body),
-                    ),
-                    suffixIcon: Image.asset(AssetsUrl.mail)),
+                  label: Text("Email Address", style: Typo.textFieldLabelStyle),
+                  suffixIcon: Image.asset(AssetsUrl.mail),
+                ),
               ),
               HeightBox(24.h),
               TextFormField(
                 decoration: InputDecoration(
-                    label: Text(
-                      "Password",
-                      style: TextStyle(
-                          fontFamily: Typo.medium,
-                          fontSize: 14,
-                          color: AppColors.body),
-                    ),
-                    suffixIcon: Image.asset(AssetsUrl.hide)),
+                  label: Text("Password", style: Typo.textFieldLabelStyle),
+                  suffixIcon: Image.asset(AssetsUrl.hide),
+                ),
               ),
+              20.widthBox,
 
               Row(
                 children: [
@@ -95,10 +93,6 @@ class SignInScreen extends StatelessWidget {
                 },
                 child: Text(
                   "LOGIN",
-                  style: TextStyle(
-                    fontFamily: Typo.semiBold,
-                    fontSize: 18,
-                  ),
                 ),
               ),
               // HeightBox(5.h),
@@ -113,12 +107,13 @@ class SignInScreen extends StatelessWidget {
                       .color(AppColors.body)
                       .make(),
                   TextButton(
-                      onPressed: () {
-                        GoRouter.of(context).goNamed(SignUpScreen.id);
-                      },
-                      child: Text(
-                        "Sign Up",
-                      )),
+                    onPressed: () {
+                      GoRouter.of(context).goNamed(SignUpScreen.id);
+                    },
+                    child: Text(
+                      "Sign Up",
+                    ),
+                  ),
                 ],
               ),
               HeightBox(90.h),
