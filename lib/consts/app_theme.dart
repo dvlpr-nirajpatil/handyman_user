@@ -6,6 +6,7 @@ import 'package:handyman_user/consts/typography.dart';
 class AppTheme {
   static ThemeData theme = ThemeData(
     primaryColor: AppColors.primary,
+    // App Bar Theme
     appBarTheme: AppBarTheme(
         iconTheme: IconThemeData(color: AppColors.scaffoldBackgroundColor),
         backgroundColor: AppColors.primary,
@@ -13,10 +14,13 @@ class AppTheme {
             color: AppColors.scaffoldBackgroundColor,
             fontFamily: Typo.medium,
             fontSize: 18.sp)),
+
+    // Scaffold
     scaffoldBackgroundColor: Color(0xffffffff),
+    // Filled Button
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(
-        textStyle: TextStyle(fontFamily: Typo.medium, fontSize: 16.sp),
+        textStyle: TextStyle(fontFamily: Typo.semiBold, fontSize: 16.sp),
         minimumSize: Size(double.infinity, 45.h),
         backgroundColor: AppColors.primary,
         shape: RoundedRectangleBorder(
@@ -24,6 +28,7 @@ class AppTheme {
         ),
       ),
     ),
+    // Input Decoration
     inputDecorationTheme: InputDecorationTheme(
       labelStyle: TextStyle(
           fontFamily: Typo.medium, fontSize: 14.sp, color: AppColors.body),

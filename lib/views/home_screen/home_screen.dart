@@ -7,7 +7,9 @@ import 'package:handyman_user/consts/assets_url.dart';
 import 'package:handyman_user/consts/color_pallet.dart';
 import 'package:handyman_user/consts/spacing.dart';
 import 'package:handyman_user/consts/typography.dart';
+import 'package:handyman_user/models/service_data_model.dart';
 import 'package:handyman_user/views/home_screen/book_service_step_one.dart';
+
 import 'package:velocity_x/velocity_x.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -17,27 +19,29 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    VxSwiper swiper = VxSwiper.builder(
+      itemCount: 3,
+      autoPlay: true,
+      viewportFraction: 1.0,
+      height: 250.h,
+      itemBuilder: (context, index) {
+        return Image.asset(
+          AssetsUrl.swiper,
+          fit: BoxFit.fill,
+        );
+      },
+    );
+
     return Scaffold(
       body: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
+        physics: ClampingScrollPhysics(),
         child: Column(
           children: [
             //swiper elements
             Stack(
               clipBehavior: Clip.none,
               children: [
-                VxSwiper.builder(
-                  itemCount: 3,
-                  autoPlay: true,
-                  viewportFraction: 1.0,
-                  height: 250.h,
-                  itemBuilder: (context, index) {
-                    return Image.asset(
-                      AssetsUrl.swiper,
-                      fit: BoxFit.fill,
-                    );
-                  },
-                ),
+                swiper,
                 Positioned(
                   right: 20.w,
                   top: 20.h,
@@ -118,6 +122,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 15.h),
                   GridView.builder(
+                    padding: EdgeInsets.all(0),
                     physics: NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -127,44 +132,7 @@ class HomeScreen extends StatelessWidget {
                         crossAxisCount: 3),
                     itemCount: 6,
                     itemBuilder: (context, index) {
-                      return Container(
-                        height: 109.h,
-                        width: 98.w,
-                        decoration: BoxDecoration(
-                            border: Border.all(color: AppColors.borderColor),
-                            borderRadius: BorderRadius.circular(12.r)),
-                        child: Column(
-                          children: [
-                            Expanded(
-                              flex: 3,
-                              child: Container(
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: AppColors.purpleBackgroundColor,
-                                  borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(12.r),
-                                      topRight: Radius.circular(12.r)),
-                                ),
-                                child: SvgPicture.asset(
-                                  AssetsUrl.plumber,
-                                  fit: BoxFit.scaleDown,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 1,
-                              child: Container(
-                                child: Center(
-                                    child: Text(
-                                  "Plumber",
-                                  style: TextStyle(
-                                      fontFamily: Typo.medium, fontSize: 12.sp),
-                                )),
-                              ),
-                            )
-                          ],
-                        ),
-                      );
+                      return categoryGridTile();
                     },
                   ),
                   SizedBox(
@@ -214,138 +182,7 @@ class HomeScreen extends StatelessWidget {
                     child: Row(
                       children: List.generate(
                         3,
-                        (index) => GestureDetector(
-                          onTap: () =>
-                              GoRouter.of(context).goNamed(BookingStepOne.id),
-                          child: Container(
-                            margin: EdgeInsets.only(right: 20),
-                            child: Stack(
-                              children: [
-                                Column(
-                                  children: [
-                                    ClipRRect(
-                                      clipBehavior: Clip.antiAlias,
-                                      borderRadius: BorderRadius.only(
-                                        topLeft: Radius.circular(12),
-                                        topRight: Radius.circular(12),
-                                      ),
-                                      child: Image.asset(
-                                        AssetsUrl.paintingServices,
-                                        width: 280.w,
-                                        height: 145.h,
-                                        fit: BoxFit.fill,
-                                      ),
-                                    ),
-                                    Container(
-                                      // height: 166.h,
-                                      width: 280.w,
-                                      padding: EdgeInsets.symmetric(
-                                          vertical: 24, horizontal: 16),
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.only(
-                                          bottomLeft: Radius.circular(12),
-                                          bottomRight: Radius.circular(12),
-                                        ),
-                                      ),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          RatingBar.builder(
-                                            itemPadding:
-                                                EdgeInsets.only(right: 6),
-                                            itemCount: 5,
-                                            initialRating: 5,
-                                            itemSize: 12.w,
-                                            itemBuilder: (BuildContext context,
-                                                int index) {
-                                              return SvgPicture.asset(
-                                                  AssetsUrl.star);
-                                            },
-                                            onRatingUpdate: (double value) {
-                                              print(value);
-                                            },
-                                          ),
-                                          SizedBox(
-                                            height: 14.h,
-                                          ),
-                                          Text(
-                                            "Painting For Beautiful \nHomes..",
-                                            style: TextStyle(
-                                                fontFamily: Typo.medium,
-                                                fontSize: 16.sp,
-                                                color: AppColors.heading),
-                                          ),
-                                          SizedBox(
-                                            height: 18.h,
-                                          ),
-                                          Row(
-                                            children: [
-                                              Image.asset(AssetsUrl.worker),
-                                              SizedBox(
-                                                width: 10.w,
-                                              ),
-                                              Text(
-                                                "Wade Warren",
-                                                style: TextStyle(
-                                                    fontFamily: Typo.medium,
-                                                    fontSize: 14.sp,
-                                                    color: AppColors.body),
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    )
-                                  ],
-                                ),
-
-                                //on top
-                                Positioned(
-                                  top: 16.h,
-                                  left: 14.w,
-                                  child: Container(
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: 5, horizontal: 10),
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(50),
-                                    ),
-                                    child: Text(
-                                      "PAINTING",
-                                      style: TextStyle(
-                                          fontFamily: Typo.semiBold,
-                                          fontSize: 10.sp,
-                                          color: AppColors.primary),
-                                    ),
-                                  ),
-                                ),
-                                Positioned(
-                                  top: 131.h,
-                                  right: 13.w,
-                                  child: Container(
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: 5, horizontal: 12),
-                                    decoration: BoxDecoration(
-                                      color: AppColors.primary,
-                                      borderRadius: BorderRadius.circular(50),
-                                      border: Border.all(
-                                          width: 3, color: Colors.white),
-                                    ),
-                                    child: Text(
-                                      "\$150",
-                                      style: TextStyle(
-                                          fontFamily: Typo.semiBold,
-                                          fontSize: 16.sp,
-                                          color: Colors.white),
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                        (index) => ServiceListCard(),
                       ),
                     ),
                   ),
@@ -355,182 +192,180 @@ class HomeScreen extends StatelessWidget {
 
             // swiper
             Spacing.heightBox(20),
-            Container(
-              padding: Spacing.screenPadding.copyWith(top: 40.h),
-              child: Column(
+            VxSwiper.builder(
+              itemCount: 3,
+              autoPlay: true,
+              viewportFraction: 1.0,
+              height: 179.h,
+              itemBuilder: (context, index) {
+                return ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: Image.asset(
+                    AssetsUrl.cleaning,
+                    fit: BoxFit.fill,
+                  ),
+                );
+              },
+            ),
+            SizedBox(
+              height: 30.h,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  VxSwiper.builder(
-                    itemCount: 3,
-                    autoPlay: true,
-                    viewportFraction: 1.0,
-                    height: 179.h,
-                    itemBuilder: (context, index) {
-                      return ClipRRect(
-                        borderRadius: BorderRadius.circular(12),
-                        child: Image.asset(
-                          AssetsUrl.cleaning,
-                          fit: BoxFit.fill,
-                        ),
-                      );
-                    },
+                  Text(
+                    "Featured",
+                    style: TextStyle(
+                        fontFamily: Typo.medium,
+                        fontSize: 18.sp,
+                        color: AppColors.heading),
                   ),
-                  SizedBox(
-                    height: 30.h,
+                  Text(
+                    "Veiw All",
+                    style: TextStyle(
+                        fontFamily: Typo.medium,
+                        fontSize: 14.sp,
+                        color: AppColors.body),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 16.h,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: List.generate(
+                  2,
+                  (index) => Stack(
                     children: [
-                      Text(
-                        "Featured",
-                        style: TextStyle(
-                            fontFamily: Typo.medium,
-                            fontSize: 18.sp,
-                            color: AppColors.heading),
+                      Column(
+                        children: [
+                          ClipRRect(
+                            clipBehavior: Clip.antiAlias,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(12),
+                              topRight: Radius.circular(12),
+                            ),
+                            child: Image.asset(
+                              AssetsUrl.fixingTv,
+                              width: 157.w,
+                              height: 100.h,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                          Container(
+                            // height: 166.h,
+                            width: 157.w,
+                            padding: EdgeInsets.symmetric(
+                                vertical: 20, horizontal: 15),
+                            decoration: BoxDecoration(
+                              color: AppColors.backgroundColor,
+                              borderRadius: BorderRadius.only(
+                                bottomLeft: Radius.circular(12),
+                                bottomRight: Radius.circular(12),
+                              ),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                RatingBar.builder(
+                                  itemPadding: EdgeInsets.only(right: 4),
+                                  itemCount: 5,
+                                  initialRating: 5,
+                                  itemSize: 10.w,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return SvgPicture.asset(AssetsUrl.star);
+                                  },
+                                  onRatingUpdate: (double value) {
+                                    print(value);
+                                  },
+                                ),
+                                SizedBox(
+                                  height: 8.h,
+                                ),
+                                Text(
+                                  "Fixing TV Wire...",
+                                  style: TextStyle(
+                                      fontFamily: Typo.medium,
+                                      fontSize: 14.sp,
+                                      color: AppColors.heading),
+                                ),
+                                SizedBox(
+                                  height: 16.h,
+                                ),
+                                Row(
+                                  children: [
+                                    Image.asset(
+                                      AssetsUrl.worker,
+                                      width: 25.w,
+                                    ),
+                                    SizedBox(
+                                      width: 10.w,
+                                    ),
+                                    Text(
+                                      "Wade Warren",
+                                      style: TextStyle(
+                                          fontFamily: Typo.medium,
+                                          fontSize: 12.sp,
+                                          color: AppColors.body),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
+                          )
+                        ],
                       ),
-                      Text(
-                        "Veiw All",
-                        style: TextStyle(
-                            fontFamily: Typo.medium,
-                            fontSize: 14.sp,
-                            color: AppColors.body),
+
+                      //on top
+                      Positioned(
+                        top: 10.h,
+                        left: 10.w,
+                        child: Container(
+                          padding:
+                              EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(50),
+                          ),
+                          child: Text(
+                            "FIXING",
+                            style: TextStyle(
+                                fontFamily: Typo.semiBold,
+                                fontSize: 10.sp,
+                                color: AppColors.primary),
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        top: 86.h,
+                        right: 9.w,
+                        child: Container(
+                          padding:
+                              EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+                          decoration: BoxDecoration(
+                            color: AppColors.primary,
+                            borderRadius: BorderRadius.circular(50),
+                            border: Border.all(width: 2, color: Colors.white),
+                          ),
+                          child: Text(
+                            "\$150",
+                            style: TextStyle(
+                                fontFamily: Typo.regular,
+                                fontSize: 12.sp,
+                                color: Colors.white),
+                          ),
+                        ),
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 16.h,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: List.generate(
-                      2,
-                      (index) => Stack(
-                        children: [
-                          Column(
-                            children: [
-                              ClipRRect(
-                                clipBehavior: Clip.antiAlias,
-                                borderRadius: BorderRadius.only(
-                                  topLeft: Radius.circular(12),
-                                  topRight: Radius.circular(12),
-                                ),
-                                child: Image.asset(
-                                  AssetsUrl.fixingTv,
-                                  width: 157.w,
-                                  height: 100.h,
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
-                              Container(
-                                // height: 166.h,
-                                width: 157.w,
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 20, horizontal: 15),
-                                decoration: BoxDecoration(
-                                  color: AppColors.backgroundColor,
-                                  borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(12),
-                                    bottomRight: Radius.circular(12),
-                                  ),
-                                ),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    RatingBar.builder(
-                                      itemPadding: EdgeInsets.only(right: 4),
-                                      itemCount: 5,
-                                      initialRating: 5,
-                                      itemSize: 10.w,
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        return SvgPicture.asset(AssetsUrl.star);
-                                      },
-                                      onRatingUpdate: (double value) {
-                                        print(value);
-                                      },
-                                    ),
-                                    SizedBox(
-                                      height: 8.h,
-                                    ),
-                                    Text(
-                                      "Fixing TV Wire...",
-                                      style: TextStyle(
-                                          fontFamily: Typo.medium,
-                                          fontSize: 14.sp,
-                                          color: AppColors.heading),
-                                    ),
-                                    SizedBox(
-                                      height: 16.h,
-                                    ),
-                                    Row(
-                                      children: [
-                                        Image.asset(
-                                          AssetsUrl.worker,
-                                          width: 25.w,
-                                        ),
-                                        SizedBox(
-                                          width: 10.w,
-                                        ),
-                                        Text(
-                                          "Wade Warren",
-                                          style: TextStyle(
-                                              fontFamily: Typo.medium,
-                                              fontSize: 12.sp,
-                                              color: AppColors.body),
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-
-                          //on top
-                          Positioned(
-                            top: 10.h,
-                            left: 10.w,
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 4, horizontal: 8),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(50),
-                              ),
-                              child: Text(
-                                "FIXING",
-                                style: TextStyle(
-                                    fontFamily: Typo.semiBold,
-                                    fontSize: 10.sp,
-                                    color: AppColors.primary),
-                              ),
-                            ),
-                          ),
-                          Positioned(
-                            top: 86.h,
-                            right: 9.w,
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  vertical: 4, horizontal: 8),
-                              decoration: BoxDecoration(
-                                color: AppColors.primary,
-                                borderRadius: BorderRadius.circular(50),
-                                border:
-                                    Border.all(width: 2, color: Colors.white),
-                              ),
-                              child: Text(
-                                "\$150",
-                                style: TextStyle(
-                                    fontFamily: Typo.regular,
-                                    fontSize: 12.sp,
-                                    color: Colors.white),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
             SizedBox(
@@ -578,6 +413,179 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             )
+          ],
+        ),
+      ),
+    );
+  }
+
+  Container categoryGridTile() {
+    return Container(
+      height: 109.h,
+      width: 98.w,
+      decoration: BoxDecoration(
+          border: Border.all(color: AppColors.borderColor),
+          borderRadius: BorderRadius.circular(12.r)),
+      child: Column(
+        children: [
+          Expanded(
+            flex: 3,
+            child: Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                color: AppColors.purpleBackgroundColor,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(12.r),
+                    topRight: Radius.circular(12.r)),
+              ),
+              child: SvgPicture.asset(
+                AssetsUrl.plumber,
+                fit: BoxFit.scaleDown,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              child: Center(
+                  child: Text(
+                "Plumber",
+                style: TextStyle(fontFamily: Typo.medium, fontSize: 12.sp),
+              )),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class ServiceListCard extends StatelessWidget {
+  ServiceListCard({super.key, model});
+
+  ServiceDataModel? model;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () => GoRouter.of(context).goNamed(BookingStepOne.id),
+      child: Container(
+        margin: EdgeInsets.only(right: 20),
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                ClipRRect(
+                  clipBehavior: Clip.antiAlias,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(12),
+                    topRight: Radius.circular(12),
+                  ),
+                  child: Image.asset(
+                    AssetsUrl.paintingServices,
+                    width: 280.w,
+                    height: 145.h,
+                    fit: BoxFit.fill,
+                  ),
+                ),
+                Container(
+                  // height: 166.h,
+                  width: 280.w,
+                  padding: EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(12),
+                      bottomRight: Radius.circular(12),
+                    ),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      RatingBar.builder(
+                        itemPadding: EdgeInsets.only(right: 6),
+                        itemCount: 5,
+                        initialRating: 5,
+                        itemSize: 12.w,
+                        itemBuilder: (BuildContext context, int index) {
+                          return SvgPicture.asset(AssetsUrl.star);
+                        },
+                        onRatingUpdate: (double value) {
+                          print(value);
+                        },
+                      ),
+                      SizedBox(
+                        height: 14.h,
+                      ),
+                      Text(
+                        "Painting For Beautiful \nHomes..",
+                        style: TextStyle(
+                            fontFamily: Typo.medium,
+                            fontSize: 16.sp,
+                            color: AppColors.heading),
+                      ),
+                      SizedBox(
+                        height: 18.h,
+                      ),
+                      Row(
+                        children: [
+                          Image.asset(AssetsUrl.worker),
+                          SizedBox(
+                            width: 10.w,
+                          ),
+                          Text(
+                            "Wade Warren",
+                            style: TextStyle(
+                                fontFamily: Typo.medium,
+                                fontSize: 14.sp,
+                                color: AppColors.body),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
+            ),
+
+            //on top
+            Positioned(
+              top: 16.h,
+              left: 14.w,
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                child: Text(
+                  "PAINTING",
+                  style: TextStyle(
+                      fontFamily: Typo.semiBold,
+                      fontSize: 10.sp,
+                      color: AppColors.primary),
+                ),
+              ),
+            ),
+            Positioned(
+              top: 131.h,
+              right: 13.w,
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 12),
+                decoration: BoxDecoration(
+                  color: AppColors.primary,
+                  borderRadius: BorderRadius.circular(50),
+                  border: Border.all(width: 3, color: Colors.white),
+                ),
+                child: Text(
+                  "\$150",
+                  style: TextStyle(
+                      fontFamily: Typo.semiBold,
+                      fontSize: 16.sp,
+                      color: Colors.white),
+                ),
+              ),
+            ),
           ],
         ),
       ),
