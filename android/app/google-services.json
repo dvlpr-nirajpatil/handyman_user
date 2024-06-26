@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "220237959172",
+    "project_id": "billionworks-8cf33",
+    "storage_bucket": "billionworks-8cf33.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220237959172:android:165a28d9a6ddb3f8912551",
+        "android_client_info": {
+          "package_name": "dev.probity.billionworksprovider"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4De0_BVMfBO96F1JTXEyEfVt9WNZUjE8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220237959172:android:d1c3d8eb1d1a8d5c912551",
+        "android_client_info": {
+          "package_name": "dev.probity.bworksprovider"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4De0_BVMfBO96F1JTXEyEfVt9WNZUjE8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220237959172:android:459d1f409d616448912551",
+        "android_client_info": {
+          "package_name": "dev.probity.bworksuser"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4De0_BVMfBO96F1JTXEyEfVt9WNZUjE8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

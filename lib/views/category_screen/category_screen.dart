@@ -11,34 +11,40 @@ import 'package:handyman_user/views/category_screen/category_detail/category_det
 
 class CategoryScreen extends StatelessWidget {
   CategoryScreen({super.key});
-
   static String id = "CategoryScreen";
-  static List images = [
-    AssetsUrl.plumber,
-    AssetsUrl.smartHome,
-    AssetsUrl.painter,
-    AssetsUrl.pestControl,
-    AssetsUrl.carpenter,
-    AssetsUrl.security,
-    AssetsUrl.acRepair,
-    AssetsUrl.salon,
-    AssetsUrl.salon,
-  ];
-  static List name = [
-    "Smart Home",
-    "Painter",
-    "Pest Control",
-    "Carpenter",
-    "Security",
-    "AC Repair",
-    "Salon",
-  ];
-
   List<Category> categories = [
     Category(
       name: "Plumber",
       icon: AssetsUrl.plumber,
-    )
+    ),
+    Category(
+      name: "Smart Home",
+      icon: AssetsUrl.smartHome,
+    ),
+    Category(
+      name: "Painter",
+      icon: AssetsUrl.painter,
+    ),
+    Category(
+      name: "Pest Control",
+      icon: AssetsUrl.pestControl,
+    ),
+    Category(
+      name: "Carpente",
+      icon: AssetsUrl.carpenter,
+    ),
+    Category(
+      name: "Security",
+      icon: AssetsUrl.security,
+    ),
+    Category(
+      name: "AC Repair",
+      icon: AssetsUrl.acRepair,
+    ),
+    Category(
+      name: "Salone",
+      icon: AssetsUrl.salon,
+    ),
   ];
 
   @override
@@ -72,7 +78,7 @@ class CategoryScreen extends StatelessWidget {
               onTap: () {
                 GoRouter.of(context)
                     .goNamed(CategoryDetailsScreen.id, pathParameters: {
-                  'category': name[index],
+                  'category': categories[index].name,
                 });
               },
               child: Container(
@@ -94,7 +100,7 @@ class CategoryScreen extends StatelessWidget {
                               topRight: Radius.circular(12.r)),
                         ),
                         child: SvgPicture.asset(
-                          images[index],
+                          categories[index].icon,
                           fit: BoxFit.scaleDown,
                         ),
                       ),
@@ -103,7 +109,7 @@ class CategoryScreen extends StatelessWidget {
                       flex: 2,
                       child: Center(
                           child: Text(
-                        name[index],
+                        categories[index].name,
                         style:
                             TextStyle(fontFamily: Typo.medium, fontSize: 16.sp),
                       )),
